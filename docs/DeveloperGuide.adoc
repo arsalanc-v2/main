@@ -507,7 +507,7 @@ In the example outlined in Step 5, if the `Model#hasMedicine(Paracetamol)` retur
 ** Cons: Might end up with too large a surplus of un-prescribed `Medicine`.
 // end::medicineinventory[]
 
-//tag::analytics[]
+// tag::analytics[]
 === Analytics feature
 The analytics feature allows users to view numerical statistics and visualizations across the various functions of a
 clinic.
@@ -546,9 +546,9 @@ The following operations are implemented: +
 
 ==== Design Considerations
 
-//end::analytics[]
+// end::analytics[]
 
-//tag::export[]
+// tag::export[]
 === Export feature
 The export feature allows users to extract patient related data out of the program, into Comma Separated Values(CSV)
 format.
@@ -589,7 +589,7 @@ operation. Easier to implement.
 * **Alternative 2:** Specifiable by user
 ** Pro: Gives users more control.
 ** Cons: Slower operation due to time taken to enter filename and location. More difficult to implement.
-//end::export[]
+// end::export[]
 
 // tag::dataencryption[]
 === [Proposed] Data Encryption
