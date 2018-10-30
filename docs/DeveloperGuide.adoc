@@ -583,7 +583,7 @@ The following operations are implemented: +
 ** Pros: Can store more complex relationships between data. Data can be stored in the form of charts and graphs.
 ** Cons: Less widely supported. Consumes more memory. More difficult to implement.
 
-===== Aspect: File location and naming
+===== Aspect: File location and Naming
 
 * **Alternative 1 (current choice):** Predetermined within the program to be stored in the root folder with fixed names.
 ** Pros: Users can easily find it as it is in the same location as the program and has a standard name. Faster
