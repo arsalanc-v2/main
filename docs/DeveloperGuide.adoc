@@ -563,7 +563,7 @@ image::ExportActivityDiagram.png[width="800"]
 The `ExportPatientData` class contains `static` methods for filtering and organizing the relevant data. These methods
 depend on a list of patients. It then passes the data to `ExportUtil` in order to write to a CSV file. `ExportUtil` also
 checks the validity of the data to be written. The names and locations of the CSV files are predetermined by
-`ExportPatientData`. All exported filed are stored in the root folder of the program.
+`ExportPatientData`. All exported files are stored in the root folder of the program.
 
 The following operations are implemented: +
 
