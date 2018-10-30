@@ -513,6 +513,8 @@ The analytics feature allows users to view numerical statistics and visualizatio
 clinic.
 
 ==== Current Implementation
+The following class diagram represents the relationships between the classes in the `analytics` package.
+
 image::AnalyticsClassDiagram.png[width="800"]
 
 The abstract `Statistics` class specified methods for the computation and retrieval of two groups of statistics. The
@@ -555,6 +557,7 @@ format.
 
 ==== Current Implementation
 The following activity diagram represents the workflow of the export functionality.
+
 image::ExportActivityDiagram.png[width="800"]
 
 The `ExportPatientData` class contains `static` methods for filtering and organizing the relevant data. These methods
