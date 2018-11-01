@@ -8,8 +8,12 @@
 ---
 
 == Overview
-
-ClinicIO is a desktop application to manage a clinic. The user interacts with it using a CLI, and it has a GUI created
+// command line constraint
+// 2 paragraphs
+// number sections
+// pdf
+This page showcases my contributions to a software engineering group project as part of a university module. ClinicIO is
+ a desktop application to manage a clinic. The user interacts with it using a CLI, and it has a GUI created
 with JavaFX. It is written in Java, and has about 10 kLoC.
 
 == Summary of contributions
@@ -24,7 +28,6 @@ a flexible yet powerful interface through which different types of visualization
 in order to ensure that many more metrics can be programmed to be tracked in the future.
 
 * *Minor enhancement*: added commands to export various types of patient data to a human editable format (CSV).
-.
 
 * *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
 
