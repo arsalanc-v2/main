@@ -517,18 +517,18 @@ The following class diagram represents the relationships between the classes in 
 
 image::AnalyticsClassDiagram.png[width="800"]
 
-The abstract `Statistics` class specified methods for the computation and retrieval of two groups of statistics. The
+The abstract `Statistics` class specifies methods for the computation and retrieval of two groups of statistics. The
 first group consists of statistics to be displayed as a summary while the second is for ones that are visualized. Each
 of the statistics classes inherit from `Statistics`. They are encapsulated in `Analytics` which acts as a
-wrapper class and employs the delegation pattern. Additionally, each of them depend on `DateTimeCount` which provides
-the number of occurrences for various date and time periods.
+wrapper class for the statistics classes and employs the delegation pattern. Additionally, each of them depend on
+`DateUtil` and `TimeUtil`. These classes contain utility methods for date and time information such as the number of
+occurrences in a certain date or time period. The occurrences can be of events such as the number of appointments.
 
 The following operations are implemented: +
 
-* `patientstats` Command - displays information on patients.
-* `apptstats` Command - displays information on appointments.
-* `doctorstats` Command - displays information on doctors.
-* `medstats` command - displays information on medicines.
+* `patientstats` Command - displays information relating to patients.
+* `apptstats` Command - displays information relating to appointments.
+* `doctorstats` Command - displays information relating to doctors.
 
 ==== `patientstats` Command
 
@@ -539,10 +539,6 @@ The following operations are implemented: +
 {add implementation details}
 
 ==== `doctorstats` Command
-
-{add implementation details}
-
-==== `medstats` Command
 
 {add implementation details}
 
