@@ -459,16 +459,6 @@ Displays the following information about doctors:
 ****
 Format: `doctorstats`
 
-==== Displaying medicine statistics : `medstats` `[coming in v2.0]`
-
-Displays the following information about medicines:
-****
-* A summary of the quantity of medicines prescribed over various time periods.
-* The average spending on medicines per patient.
-* A breakdown of medicines by their quantity issued.
-****
-Format: `medstats`
-
 ==== Exporting patient personal information : `exportpatients`
 
 Exports all patients' personal information to a csv file named `ClinicIO_patientdata.csv`. +
@@ -476,10 +466,10 @@ Format: `exportpatients`
 
 The personal information consists of the following fields:
 ****
-* Name: the patient's name.
-* Address: the patient's address.
-* Phone: the patient's phone number.
-* Email: the patient's email address.
+* `Name`: the patient's name.
+* `Address`: the patient's address.
+* `Phone`: the patient's phone number.
+* `Email`: the patient's email address.
 ****
 
 ==== Exporting patients appointment records : `exportpatientsappointments`
@@ -489,14 +479,14 @@ Format: `exportpatientsappointments`
 
 Each appointment record consists of the following fields:
 ****
-* Name: the patient's name.
-* Address: the patient's address.
-* Phone: the patient's phone number.
-* Email: the patient's email address.
-* Date: the appointment's date.
-* Time: the appointment's time.
-* Status: the appointment's status. May be either `APPROVED` or `CANCELLED`.
-* Type: the type of appointment. May be either `NEW` or `FOLLOW_UP`.
+* `Name`: the patient's name.
+* `Address`: the patient's address.
+* `Phone`: the patient's phone number.
+* `Email`: the patient's email address.
+* `Date`: the appointment's date.
+* `Time`: the appointment's time.
+* `Status`: the appointment's status. May be either `APPROVED` or `CANCELLED`.
+* `Type`: the type of appointment. May be either `NEW` or `FOLLOW_UP`.
 ****
 
 Go to <<Appointment Commands>> for more details.
@@ -508,20 +498,20 @@ Format: `exportpatientsconsultations`
 
 Each consultation record consists of the following fields:
 ****
-* Name: the patient's name.
-* Address: the patient's address.
-* Phone: the patient's phone number.
-* Email: the patient's email address.
-* Date: the consultation's date.
-* Arrival Time: the arrival time of the patient at the clinic.
-* Consultation Time: the consultation's start time.
-* End time: the end time of the consultation.
-* Doctor: the doctor being consulted.
-* Prescription: the prescribed ascribed to the patient.
-* Description: the doctor's notes on the patient.
-* Appointment: whether the consultation is the result of an appointment. May be either `YES` or `NO`.
-* Appointment Date: the date of the appointment resulting in the consultation. Empty if no appointment was made.
-* Appointment Time: the time of the appointment resulting in the consultation. Empty if no appointment was made.
+* `Name`: the patient's name.
+* `Address`: the patient's address.
+* `Phone`: the patient's phone number.
+* `Email`: the patient's email address.
+* `Date`: the consultation's date.
+* `Arrival Time`: the arrival time of the patient at the clinic.
+* `Consultation Time`: the consultation's start time.
+* `End time`: the end time of the consultation.
+* `Doctor`: the doctor being consulted.
+* `Prescription`: the prescribed ascribed to the patient.
+* `Description`: the doctor's notes on the patient.
+* `Appointment`: whether the consultation is the result of an appointment. May be either `YES` or `NO`.
+* `Appointment Date`: the date of the appointment resulting in the consultation. Empty if no appointment was made.
+* `Appointment Time`: the time of the appointment resulting in the consultation. Empty if no appointment was made.
 ****
 // end::datacommands[]
 
