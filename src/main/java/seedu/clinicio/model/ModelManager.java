@@ -401,16 +401,13 @@ public class ModelManager extends ComponentManager implements Model {
     //=========== Export ==================================================================================
     //@@author arsalanc-v2
 
-    // TO CHANGE TO USE versionedClinicIo.getPatientsList()
-
     /**
      * Exports all patients' personal information.
      * @return A String. The feedback message for the user.
      */
     @Override
     public String exportPatients() {
-        ObservableList<Patient> patients = FXCollections.observableArrayList();
-        return ExportPatientsData.exportPatients(patients);
+        return ExportPatientsData.exportPatients(versionedClinicIo.getPatientList());
     }
 
     /**
@@ -419,8 +416,7 @@ public class ModelManager extends ComponentManager implements Model {
      */
     @Override
     public String exportPatientsAppointments() {
-        ObservableList<Patient> patients = FXCollections.observableArrayList();
-        return ExportPatientsData.exportAppointments(patients);
+        return ExportPatientsData.exportAppointments(versionedClinicIo.getPatientList());
     }
 
     /**
@@ -429,8 +425,7 @@ public class ModelManager extends ComponentManager implements Model {
      */
     @Override
     public String exportPatientsConsultations() {
-        ObservableList<Patient> patients = FXCollections.observableArrayList();
-        return ExportPatientsData.exportConsultations(patients);
+        return ExportPatientsData.exportConsultations(versionedClinicIo.getPatientList());
     }
     //=========== Undo/Redo ==================================================================================
 
