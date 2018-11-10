@@ -509,36 +509,81 @@ In the example outlined in Step 5, if the `Model#hasMedicine(Paracetamol)` retur
 
 // tag::analytics[]
 === Analytics feature
-The analytics feature allows users to view numerical statistics and visualizations across the various functions of a
-clinic.
+==== Overview
+The analytics feature allows users to view data across the various functions of a clinic. These are viewed in isolation
+with separate commands. However, they share a similar user interface composed of two distinct sections. They are the
+*summary* and the *visualization* as shown in the screenshot below.
 
-The following class diagram represents the relationships between the classes in the `analytics` package.
+===== Summary
+The summary displays of occurrences of events such as the number of appointments as in the screenshot above. They can be
+ raw totals or averages. This will be indicated by the
+title.
+The numbers are categorized according to the following time periods:
+. `Today`: The occurrences on the present real life date.
+. `This Week`: The occurrences in the present real life week spanning from Monday to Sunday.
+. `This Month`: The occurrences in the present real life month.
+. `This Year`: The occurrences in the present real life year.
+
+===== Visualizations
+The pane below the summary displays visualizations. There may be multiple visualizations which can be cycled through
+using the `Next` and `Previous` buttons. The visualizations may be either one of a vertical bar chart, horizontal bar
+chart, vertically stacked bar chart or a line chart.
+
+==== Implementation
+The following class diagram represents the relationships between classes in the `analytics` package.
 
 The abstract `Statistics` class specifies methods for the computation and retrieval of two groups of statistics. The
 first group consists of statistics to be displayed as a summary while the second is for ones that are visualized. Each
 of the statistics classes inherit from `Statistics`. They are encapsulated in `Analytics` which acts as a
-wrapper class for the various statistics and employs the delegation pattern. Each of statistics classes depend on
-`DateUtil` and `TimeUtil`. These classes contain utility methods for date and time information such as the number of
+wrapper class for the various statistics and employs the delegation pattern. Each of the statistics classes may depend
+on`DateUtil` and `TimeUtil`. These classes contain utility methods for date and time information such as the number of
 occurrences in a certain date or time period. The occurrences can be of events such as the number of appointments.
 
-Additionally, each of the statistics classes depend on the following classes for storing data:
+===== Data Management
+Each of the statistics classes depend on the following classes for storing data:
 
 * `StatData`:
 ** acts as a structure to encapsulate all statistics data to be displayed for simpler transport from `Analytics` to
 `AnalyticsDisplay`.
+** contains `SummaryData` and `CircularList` objects. The latter stores `VisualizationData` objects.
+** interfaces directly with the statistics classes to receive data.
+** used by `AnalyticsDisplay` to obtain fields required to create summary and visualizations.
+
 * `SummaryData`:
 ** acts as a structure to encapsulate information required to create summaries.
+** contains the following fields:
+*** `title`: the title of the summary information.
+*** `summaryElements`: the texts and their accompanying values.
 * `CircularList`:
 ** used for storing `VisualizationData` objects. Allows visualizations to be cycled backwards and forwards on the user
 interface.
 * `VisualizationData`:
 ** acts a structure to encapsulate information required to create visualizations.
+** contains the following fields:
+*** `id`: the id of the chart. Used as an identifier to apply Cascading Style Sheet (CSS) to style each chart
+individually.
+*** `type`: the type of the chart. May be either one of a vertical bar chart, horizontal bar chart, vertically stacked
+bar chart or a line chart.
+*** `isContinuous`: indicates if the chart is continuous or categorical. Used by `Plot` to create the appropriate chart.
+*** `chartTitle`: the title of the chart.
+*** `xTitle`: the title of the horizontal axis if the chart is vertical or the vertical axis if horizontal.
+*** `yTitle`: the title of the vertical axis if the chart is vertical or the horizontal axis if horizontal.
+*** `dataGroups`: the groups of data points to be plotted. Must be the same in number as `dataGroupsLabels`.
+*** `dataGroupsLabels`: the label for each group of data. Used in the legend of the chart. Must be the same in number as
+ `dataGroups`.
+
 * `Tuple`:
 ** used to store pairs of values.
-** used mostly within a `List`.
+** used mostly within a `List`, allowing order to be preserved.
+** used throughout the `analytics` package as convenient means by which to transport data points.
 
+==== Processes
+This section describes the processes that take place, from the entering of the command by the user to the displaying of
+analytics.
 
-The following is the general sequence of processes for the different types of statistics:
+===== All Statistics Commands
+
+The following apply to all the different types of statistics:
 
 . `Analytics` updates the appropriate statistics object with the latest appropriate lists (e.g. appointments) from
 `ModelManager`.
@@ -552,25 +597,23 @@ The following is the general sequence of processes for the different types of st
 
 The following operations are implemented: +
 
-* `patientstats` Command - displays information relating to patients.
-* `apptstats` Command - displays information relating to appointments.
-* `doctorstats` Command - displays information relating to doctors.
+* `patientstats` command - displays information relating to patients
+* `apptstats` command - displays information relating to appointments.
+* `doctorstats` command - displays information relating to doctors.
 
-==== `patientstats` Command
+====== `patientstats` Command
 
 The following are the processes performed specifically by `PatientStatistics`:
 
 . `PatientStatistics` calculates the summary of the number of patients.
 . `PatientStatistics` calculates the number of patients for the following time periods in a day:
-** `9AM - 12PM`
-** `12PM - 3PM`
-** `3PM - 6PM`
-** `6PM -9PM`
+** `9AM - 12PM`, `12PM - 3PM`, `3PM - 6PM`, `6PM -9PM`
+
 . `PatientStatistics` updates `StatData` with this data for a vertical bar chart visualization.
 . `PatientStatistics` calculates the total historical number of patients for each day in a week.
 . `PatientStatistics` updates `StatData` with this data for a vertical bar chart visualization.
 
-==== `apptstats` Command
+===== `apptstats` Command
 
 [NOTE]
 By default, 24 appointment slots are available in day.
@@ -584,7 +627,7 @@ following week.
 . `AppointmentStatistics` calculates the number of scheduled appointments for each date in the current year.
 . `AppointmentStatistics` updates `StatData` object with this data for a line chart visualization.
 
-==== `doctorstats` Command
+===== `doctorstats` Command
 
 The following are the processes performed specifically by `DoctorStatistics`:
 
