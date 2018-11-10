@@ -639,7 +639,7 @@ stored in the root folder.
 ** Pros: Users can easily find it as it is in the same location as the program and has a standard name. It also
 results in a quicker operation and is easier to implement.
 ** Con: It reduces flexibility as another step is required if the user needs it in another directory.
-* **Alternative 2:** Specifiable by user
+* **Alternative 2:** File location and naming are specifiable by user.
 ** Pro: This would give users more control.
 ** Cons: It results in a slower operation due to the time taken to enter filename and location. It is also more
 difficult to implement.
