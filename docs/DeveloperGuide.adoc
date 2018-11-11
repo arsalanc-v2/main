@@ -513,7 +513,7 @@ In the example outlined in Step 5, if the `Model#hasMedicine(Paracetamol)` retur
 ==== Implementation
 The following class diagram represents the relationships between classes in the `analytics` package.
 
-image::AnalyticsClassDiagram.png[width="800"]
+image::AnalyticsClassDiagram.png[width="600"]
 
 The abstract `Statistics` class specifies methods for the computation and retrieval of two groups of statistics. The
 first group consists of statistics to be displayed as a summary while the second is for ones that are visualized. Each
