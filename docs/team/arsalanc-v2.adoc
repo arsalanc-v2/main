@@ -52,7 +52,7 @@ The following code snippet adds a vertical bar chart visualization:
 "vertical axis title goes here", {list of data points go here}, {list of data labels go here})`
 
 * *Minor enhancement*: the ability to export various types of patient data to a human editable format (CSV).
-* *Minor enhancement*: a representation of a doctor patient consultation with fields such as the patient's arrival time.
+* *Minor enhancement*: a representation of a doctor-patient consultation with fields such as the patient's arrival time.
 
 * *Other contributions*:
 
