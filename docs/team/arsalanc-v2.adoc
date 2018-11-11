@@ -50,22 +50,21 @@ in order to ensure that many more metrics can be programmed to be tracked in the
 
 
 |===
-|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
+|_The following are sections I contributed to the User Guide. They showcase my ability to write documentation targeting
+end-users
+._
 |===
 
-include::../UserGuide.adoc[tag=]
-
-include::../UserGuide.adoc[tag=]
+include::../UserGuide.adoc[tag=datacommands]
 
 == Contributions to the Developer Guide
 
 |===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|_The following below are sections I contributed to the Developer Guide. They showcase my ability to write technical
+documentation and the technical depth of my contributions to the project._
 |===
 
 include::../DeveloperGuide.adoc[tag=export]
 
-include::../DeveloperGuide.adoc[tag=analyticsfeature]
+include::../DeveloperGuide.adoc[tag=analytics]
 
-
-== PROJECT: PowerPointLabs
