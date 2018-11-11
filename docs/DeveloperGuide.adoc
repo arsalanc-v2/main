@@ -522,12 +522,6 @@ wrapper class for the various statistics and employs the delegation pattern. Eac
 on`DateUtil` and `TimeUtil`. These classes contain utility methods for date and time information such as the number of
 occurrences in a certain date or time period. The occurrences can be of events such as appointments.
 
-The following operations are implemented: +
-
-* `patientstats` command - displays information relating to patients.
-* `apptstats` command - displays information relating to appointments.
-* `doctorstats` command - displays information relating to doctors.
-
 ===== Data Management
 Each of the statistics classes depend on the following classes for storing data:
 
@@ -658,7 +652,7 @@ platforms. Additionally, it is easier to implement.
 and graphs.
 ** Cons: It is less widely supported and consumes more memory. It is also more difficult to implement.
 
-===== Aspect: File location and Naming
+===== Aspect: File location and naming
 
 * **Alternative 1 (current choice):** File location and naming are predetermined within the program and they are to be
 stored in the root folder.

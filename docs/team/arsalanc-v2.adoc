@@ -12,39 +12,66 @@
 // 2 paragraphs
 // number sections
 // pdf
-This page showcases my contributions to a software engineering group project as part of a university module. We built a
-desktop application named ClinicIO. ClinicIO is intended for medical clinic receptionists and doctors. It allows our
-target users to manage a multitude of clinic processes such as storing patient records and managing queues. While there
-is a Graphical User Inteface (GUI) for displaying results, a key constraint for the module was to ensure that the
-application is used through a text interface. The program logic is written in Java and the GUI is written in JavaFX.
+This page showcases my contributions to an open sourced software engineering group project which was done as part of a
+university module. We built a desktop application named ClinicIO. ClinicIO is intended for medical clinic receptionists
+and doctors. It allows them to effortlessly manage a multitude of clinic processes such as storing patient records and
+managing queues. While there is a Graphical User Inteface (GUI) for displaying results, a key constraint for the module
+was to ensure that the application is used through a text interface. The program logic is written in Java in an Object
+Oriented manner and the GUI is written in JavaFX.
+
+In the management of the project, I was responsible for ensuring the quality of the project's documentation. This
+involved a decided focus on reviewing language, ensuring that it is comprehensive and as simple as possible to
+understand. I believe this is important to enable our program to be adopted by users and external developers.
+
+My individual role was as a developer in charge of all aspects related to making use of the data in the program. To this
+end, I first worked together with my group members to understand their features. Subsequently, I integrated the
+ability to view analytics for each of them. In addition, the ability to export data out of the program was another key
+aspect I contributed.
 
 == Summary of contributions
 
-* *Major enhancement*:
-added *the ability to access detailed statistics and visualizations*
-** What it does: allows the user to track the activity of a clinic through objective metrics, in a simple manner.
-** Justification: This feature improves the product significantly because it provides a user with insight to make
-decisions regarding the clinic's processes and improve efficiency.
-** Highlights: This enhancement spans across the major functions of a clinic. It was a challenge to design and implement
-a flexible yet powerful interface through which different types of visualizations can be easily created. This was done
-in order to ensure that many more metrics can be programmed to be tracked in the future.
+* *Major enhancement*: the ability to view detailed statistics and visualizations.
+** _What it does_: It allows the user to track the activity of a clinic through objective metrics, in a simple
+manner.
+Analytics support is enabled for patients, appointments and doctors.
+** _Justification_: This feature improves the product significantly because it provides a user with insight to make
+decisions regarding the clinic's processes. This can be used to improve the efficiency and the experience for both staff
+ and patients. It ensures that the clinic is able to improve with time, in multiple aspects, in order to benefit all
+ stakeholders.
+** _Highlights_: This enhancement integrates across the major functions of a clinic. It was a challenge to design and
+implement a flexible yet powerful interface through which different types of visualizations can be easily
+created. The following code snippet allows the creation of a stacked bar chart:
+A consistent and visually appealing graphical user interface was also a key part of this. This was done in order to
+ensure that many more metrics can be programmed to be tracked in the future.
 
-* *Minor enhancement*: added commands to export various types of patient data to a human editable format (CSV).
+The following code snippet adds a vertical bar chart visualization:
+
+`statData.add("chart id goes here", ChartType.VERTICAL_BAR, "chart title goes here",  "horizontal axis title goes here",
+"vertical axis title goes here", {list of data points go here}, {list of data labels go here})`
+
+* *Minor enhancement*: the ability to export various types of patient data to a human editable format (CSV).
+* *Minor enhancement*: a representation of a doctor patient consultation with fields such as the patient's arrival time.
 
 * *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
 
 * *Other contributions*:
 
 ** Project management:
+*** Added handy git tips that helped group members:
+https://github.com/CS2103-AY1819S1-W14-1/main/projects/1#card-13922007[1],
+https://github.com/CS2103-AY1819S1-W14-1/main/projects/1#card-13903185[2]
 
 ** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+*** Added the ability to switch between GUI panels on top of an existing GUI placeholder:
+https://github.com/CS2103-AY1819S1-W14-1/main/pull/227[#227]
 ** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+*** Updated the developer guide appendices: https://github.com/CS2103-AY1819S1-W14-1/main/pull/20[#20]
+*** Added a section to guide users on viewing user interface previews:
+https://github.com/CS2103-AY1819S1-W14-1/main/pull/120/files[#120]
+*** Updated the class diagrams of the logic component:
 ** Community:
 *** Reviewed team mates' code contributions (with non-trivial review comments):
-**** https://github.com/CS2103-AY1819S1-W14-1/main/pull/60[#60],
+https://github.com/CS2103-AY1819S1-W14-1/main/pull/60[#60],
 https://github.com/CS2103-AY1819S1-W14-1/main/pull/132[#132],
 https://github.com/CS2103-AY1819S1-W14-1/main/pull/140[#140],
 https://github.com/CS2103-AY1819S1-W14-1/main/pull/144[#144],
@@ -53,13 +80,11 @@ https://github.com/CS2103-AY1819S1-W14-1/main/pull/179[#179],
 https://github.com/CS2103-AY1819S1-W14-1/main/pull/238[#238]
 
 *** Reported bugs and suggestions for other teams in the cohort:
-**** https://github.com/CS2103-AY1819S1-W13-2/main/issues/148[1],
+https://github.com/CS2103-AY1819S1-W13-2/main/issues/148[1],
 https://github.com/CS2103-AY1819S1-W13-2/main/issues/157[2],
 https://github.com/CS2103-AY1819S1-W13-2/main/issues/163[3],
 https://github.com/CS2103-AY1819S1-W13-2/main/issues/167[4],
 https://github.com/CS2103-AY1819S1-W13-2/main/issues/170[5]
-
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
 
 == Contributions to the User Guide
 
