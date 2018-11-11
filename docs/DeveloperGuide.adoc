@@ -509,25 +509,6 @@ In the example outlined in Step 5, if the `Model#hasMedicine(Paracetamol)` retur
 
 // tag::analytics[]
 === Analytics feature
-==== Overview
-The analytics feature allows users to view data across the various functions of a clinic. These are viewed in isolation
-with separate commands. However, they share a similar user interface composed of two distinct sections. They are the
-*summary* and the *visualization* as shown in the screenshot below.
-
-===== Summary
-The summary displays of occurrences of events such as the number of appointments as in the screenshot above. They can be
- raw totals or averages. This will be indicated by the
-title.
-The numbers are categorized according to the following time periods:
-. `Today`: The occurrences on the present real life date.
-. `This Week`: The occurrences in the present real life week spanning from Monday to Sunday.
-. `This Month`: The occurrences in the present real life month.
-. `This Year`: The occurrences in the present real life year.
-
-===== Visualizations
-The pane below the summary displays visualizations. There may be multiple visualizations which can be cycled through
-using the `Next` and `Previous` buttons. The visualizations may be either one of a vertical bar chart, horizontal bar
-chart, vertically stacked bar chart or a line chart.
 
 ==== Implementation
 The following class diagram represents the relationships between classes in the `analytics` package.

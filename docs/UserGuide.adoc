@@ -430,9 +430,34 @@ Selects the 1st Cassandra as displayed in the list resulting from the `find Cass
 // end::queuecommands[]
 
 // tag::datacommands[]
-=== Data Commands
+=== Data Management
 
-==== Displaying patient statistics : `patientstats`
+==== Analytics
+The analytics feature allows users to view statistics across the various functions of a clinic. These are viewed in
+isolation with separate commands for each department. However, they share a similar user interface composed of two
+distinct sections. They are the *summary* and the *visualizations* as shown in the following screenshot:
+
+image::AnalyticsScreenshot.png[width="600"]
+
+===== Summary
+The summary displays of occurrences of events such as the number of appointments as in the screenshot above. They can be
+ raw totals or averages. This will be indicated by the title. The numbers are categorized according to the following
+ time periods:
+
+. `Today`: The occurrences on the present real life date.
+. `This Week`: The occurrences in the present real life week spanning from Monday to Sunday.
+. `This Month`: The occurrences in the present real life month.
+. `This Year`: The occurrences in the present real life year.
+
+===== Visualizations
+The pane below the summary displays visualizations. There may be multiple visualizations which can be cycled through
+using the `Next` and `Previous` buttons. The visualizations may be either one of a vertical bar chart, horizontal bar
+chart, vertically stacked bar chart or a line chart.
+
+==== Analytics Commands
+The following commands can be used to display the different types of statistics.
+
+===== Displaying patient statistics : `patientstats`
 Displays the following information about patients:
 ****
 * A summary of the number of patients over various time periods.
@@ -441,7 +466,7 @@ Displays the following information about patients:
 ****
 Format: `patientstats`
 
-==== Displaying appointment statistics : `apptstats`
+===== Displaying appointment statistics : `apptstats`
 
 Displays the following information about appointments:
 ****
@@ -451,21 +476,30 @@ Displays the following information about appointments:
 ****
 Format: `apptstats`
 
-==== Displaying doctor statistics : `doctorstats`
+===== Displaying doctor statistics : `doctorstats`
 
 Displays the following information about doctors:
 ****
 * A summary of the average number of consultations per doctor over various time periods.
 * The number of patient preferences for each doctor.
+* The total number of consultations for each doctor.
 ****
 Format: `doctorstats`
 
-==== Exporting patient personal information : `exportpatients`
+==== Exporting Patient Data
+ClinicIO allows the exporting of patient related data to Comma Separated Values (csv) files. The filenames are
+predetermined and specific to the type of data being exported. The files are generated in the same file directory as the
+program.
+
+==== Export Commands
+The following commands can be used to export the different types of patient data.
+
+===== Exporting patient personal information : `exportpatients`
 
 Exports all patients' personal information to a csv file named `ClinicIO_patientdata.csv`. +
 Format: `exportpatients`
 
-The personal information consists of the following fields:
+The personal information consists of the following fields, in order:
 ****
 * `Name`: the patient's name.
 * `Address`: the patient's address.
@@ -473,12 +507,12 @@ The personal information consists of the following fields:
 * `Email`: the patient's email address.
 ****
 
-==== Exporting patients appointment records : `exportpatientsappointments`
+===== Exporting patients appointment records : `exportpatientsappointments`
 
 Exports all patients' appointment records to csv file named `ClinicIO_patientsappointments.csv`. +
 Format: `exportpatientsappointments`
 
-Each appointment record consists of the following fields:
+Each appointment record consists of the following fields, in order:
 ****
 * `Name`: the patient's name.
 * `Address`: the patient's address.
@@ -492,12 +526,12 @@ Each appointment record consists of the following fields:
 
 Go to <<Appointment Commands>> for more details on appointments.
 
-==== Exporting patients consultation records : `exportpatientsconsultations`
+===== Exporting patients consultation records : `exportpatientsconsultations`
 
 Exports all patients' consultation records to csv file named `ClinicIO_patientsconsultations.csv`. +
 Format: `exportpatientsconsultations`
 
-Each consultation record consists of the following fields:
+Each consultation record consists of the following fields, in order:
 ****
 * `Name`: the patient's name.
 * `Address`: the patient's address.
