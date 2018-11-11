@@ -472,7 +472,7 @@ Displays the following information about appointments:
 ****
 * A summary of the number of scheduled appointments over various time periods.
 * The availability of appointment slots as compared to the number of scheduled appointments.
-* The number of appointments scheduled in the current year.
+* The number of appointments scheduled for each month in the current year.
 ****
 Format: `apptstats`
 
