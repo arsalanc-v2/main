@@ -103,7 +103,9 @@ include::../UserGuide.adoc[tag=datacommands]
 documentation and the technical depth of my contributions to the project._
 |===
 
+include::../DeveloperGuide.adoc[tag=analytics]
+
 include::../DeveloperGuide.adoc[tag=export]
 
-include::../DeveloperGuide.adoc[tag=analytics]
+
 
