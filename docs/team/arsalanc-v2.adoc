@@ -12,9 +12,11 @@
 // 2 paragraphs
 // number sections
 // pdf
-This page showcases my contributions to a software engineering group project as part of a university module. ClinicIO is
- a desktop application to manage a clinic. The user interacts with it using a CLI, and it has a GUI created
-with JavaFX. It is written in Java, and has about 10 kLoC.
+This page showcases my contributions to a software engineering group project as part of a university module. We built a
+desktop application named ClinicIO. ClinicIO is intended for medical clinic receptionists and doctors. It allows our
+target users to manage a multitude of clinic processes such as storing patient records and managing queues. While there
+is a Graphical User Inteface (GUI) for displaying results, a key constraint for the module was to ensure that the
+application is used through a text interface. The program logic is written in Java and the GUI is written in JavaFX.
 
 == Summary of contributions
 
@@ -41,13 +43,25 @@ in order to ensure that many more metrics can be programmed to be tracked in the
 ** Documentation:
 *** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
+*** Reviewed team mates' code contributions (with non-trivial review comments):
+**** https://github.com/CS2103-AY1819S1-W14-1/main/pull/60[#60],
+https://github.com/CS2103-AY1819S1-W14-1/main/pull/132[#132],
+https://github.com/CS2103-AY1819S1-W14-1/main/pull/140[#140],
+https://github.com/CS2103-AY1819S1-W14-1/main/pull/144[#144],
+https://github.com/CS2103-AY1819S1-W14-1/main/pull/152[#152],
+https://github.com/CS2103-AY1819S1-W14-1/main/pull/179[#179],
+https://github.com/CS2103-AY1819S1-W14-1/main/pull/238[#238]
+
+*** Reported bugs and suggestions for other teams in the cohort:
+**** https://github.com/CS2103-AY1819S1-W13-2/main/issues/148[1],
+https://github.com/CS2103-AY1819S1-W13-2/main/issues/157[2],
+https://github.com/CS2103-AY1819S1-W13-2/main/issues/163[3],
+https://github.com/CS2103-AY1819S1-W13-2/main/issues/167[4],
+https://github.com/CS2103-AY1819S1-W13-2/main/issues/170[5]
+
 *** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
 
 == Contributions to the User Guide
-
 
 |===
 |_The following are sections I contributed to the User Guide. They showcase my ability to write documentation targeting
