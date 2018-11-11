@@ -520,6 +520,12 @@ wrapper class for the various statistics and employs the delegation pattern. Eac
 on`DateUtil` and `TimeUtil`. These classes contain utility methods for date and time information such as the number of
 occurrences in a certain date or time period. The occurrences can be of events such as the number of appointments.
 
+The following operations are implemented: +
+
+* `patientstats` command - displays information relating to patients
+* `apptstats` command - displays information relating to appointments.
+* `doctorstats` command - displays information relating to doctors.
+
 ===== Data Management
 Each of the statistics classes depend on the following classes for storing data:
 
@@ -575,12 +581,6 @@ The following apply to all the different types of statistics:
 . `AnalyticsDisplay` retrieves `StatData` from `AnalyticsDisplayEvent` and passes it to `AnalyticsPlot`.
 . `AnalyticsPlot` updates the summary user interface.
 . `AnalyticsPlot` decides and plots the appropriate chart on the user interface.
-
-The following operations are implemented: +
-
-* `patientstats` command - displays information relating to patients
-* `apptstats` command - displays information relating to appointments.
-* `doctorstats` command - displays information relating to doctors.
 
 ====== `patientstats` Command
 
