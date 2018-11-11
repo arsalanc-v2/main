@@ -554,7 +554,6 @@ bar chart or a line chart.
 *** `dataGroups`: the groups of data points to be plotted. Must be the same in number as `dataGroupsLabels`.
 *** `dataGroupsLabels`: the label for each group of data. Used in the legend of the chart. Must be the same in number as
  `dataGroups`.
-
 * `Tuple`:
 ** used to store pairs of values.
 ** used mostly within a `List`, allowing order to be preserved.
@@ -613,7 +612,33 @@ The following are the processes performed specifically by `DoctorStatistics`:
 . `DoctorStatistics` updates `StatData` object with data for a horizontal bar chart visualization.
 
 ==== Design Considerations
-Stored in a `List` instead of a `HashMap`
+===== Aspect: Computing statistics
+* **Alternative 1 (current choice):** Compute statistics only upon request
+** Pro: This reduces unnecessary computational workload.
+** Con: There is greater computational workload upon request of the statistics which may result in the user having to
+wait longer (if at all) to view them.
+* **Alternative 2:** Compute statistics every time there is a change in the underlying data
+** Pro: There is no chance of the user having to wait to view statistics.
+** Con: This increases the computational workload which may provide little benefit. For example, if there is frequent
+change in underlying data such as the number of patients while the user hardly views statistics, computational resources
+ would be wasted.
+
+===== Aspect: User interface for the different types of statistics
+
+* **Alternative 1 (current choice):** Single, predetermined user interface
+** Pros: It is consistent, making it easier for users to process the information. It easier to implement due to the
+reusability of code.
+** Con: It lowers flexibility by mandating all statistics types to only have a summary and visualization component.
+* **Alternative 2:** Customized user interface for each type of statistic
+** Pro: It allows displays of quantitative information that are better suited for each individual statistics type. This
+results in greater flexibility even in the future as users may have changing analytics needs.
+** Cons: It may lower design consistency, forcing users to readjust each time they view it. It is more difficult to
+implement.
+* **Alternative 3:** Allow users to pick and choose which statistics they want to view.
+** Pro: This provides the greatest flexibility as users total control in which statistics they view.
+** Cons: The burden is placed on the user having to think and decide which statistics they want to view. It is more
+ difficult to implement due requiring a consistent user interface that would allow the myriad of possible
+ combinations of statistics that a user may choose.
 
 // end::analytics[]
 
