@@ -437,12 +437,12 @@ The analytics feature allows users to view statistics across the various functio
 isolation with separate commands for each department. However, they share a similar user interface composed of two
 distinct sections. They are the *summary* and the *visualizations* as shown in the following screenshot:
 
-image::AnalyticsScreenshot.png[width="600"]
+image::AnalyticsScreenshot.png[width="800"]
 
 ===== Summary
-The summary displays of occurrences of events such as the number of appointments as in the screenshot above. They can be
- raw totals or averages. This will be indicated by the title. The numbers are categorized according to the following
- time periods:
+The summary displays the number of occurrences of events such as the `Number of appointments` in the screenshot above.
+They can be raw totals or averages. This will be indicated by the title. The numbers are categorized according to the
+following time periods:
 
 . `Today`: The occurrences on the present real life date.
 . `This Week`: The occurrences in the present real life week spanning from Monday to Sunday.
