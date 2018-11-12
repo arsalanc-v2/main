@@ -18,23 +18,30 @@ public class Analytics {
     private PatientStatistics patientStatistics;
     private AppointmentStatistics appointmentStatistics;
     private DoctorStatistics doctorStatistics;
-    private MedicineStatistics medicineStatistics;
 
     public Analytics() {
         patientStatistics = new PatientStatistics();
         appointmentStatistics = new AppointmentStatistics();
         doctorStatistics = new DoctorStatistics();
-        medicineStatistics = new MedicineStatistics();
     }
 
+    /**
+     * Sets patients for all types of statistics that require it.
+     */
     public void setPatients(ObservableList<Patient> patients) {
         patientStatistics.setPatients(patients);
     }
 
+    /**
+     * Sets appointments for all types of statistics that require it.
+     */
     public void setAppointments(ObservableList<Appointment> appointments) {
         appointmentStatistics.setAppointments(appointments);
     }
 
+    /**
+     * Sets doctors for all types of statistics that require it.
+     */
     public void setDoctors(ObservableList<Staff> doctors) {
         doctorStatistics.setDoctors(doctors);
     }
@@ -44,39 +51,22 @@ public class Analytics {
      */
     public void setConsultations(ObservableList<Consultation> consultations) {
         doctorStatistics.setConsultations(consultations);
+        patientStatistics.setConsultations(consultations);
     }
 
     /**
-     *
-     * @param type
-     * @return
+     * @return the appropriate statistics data based on the type of statistics supplied.
      */
     public StatData getAllStatisticsOfType(StatisticType type) {
         switch (type) {
         case PATIENT:
             return patientStatistics.getAllData();
-
         case APPOINTMENT:
             return appointmentStatistics.getAllData();
-
         case DOCTOR:
             return doctorStatistics.getAllData();
-
-        case MEDICINE:
-            return medicineStatistics.getAllData();
-
         default:
             return appointmentStatistics.getAllData();
         }
     }
-
-    /**
-    public void setMedicines(ObservableList<Medicine> medicines) {
-        medicineStatistics.setMedicines(medicines);
-    }
-
-    public void getAllMedicineStatistics() {
-        medicineStatistics.getAllStatistics();
-    }
-     */
 }

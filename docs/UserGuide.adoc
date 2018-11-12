@@ -30,7 +30,20 @@ This guide does not assume any prior technical knowledge. Check the <<FAQ>> sect
 ClinicIO is a desktop app to enable you to manage a clinic with ease and efficiency.
 You can use ClinicIO to manage patient records, queues, medical inventory, appointments as well as view detailed statistics. +
 
-Go to the <<Installation Guide>> to get started on install ClinicIO.
+As a doctor, you will be able to do the following:
+
+* View patient record
+* Enter patient additional medical information.
+
+As a receptionist, you will be able to do the following:
+
+* Manage patient record
+* Manage clinic queue
+* Manage medicine inventory in the clinic
+* Manage future patient appointment
+* View statistics and export data.
+
+Head to the <<Installation Guide>> to get started on install ClinicIO.
 
 == Installation Guide
 
@@ -221,7 +234,7 @@ You can login to ClinicIO. +
 Format: `login r/ROLE n/NAME pass/PASSWORD` +
 
 [WARNING]
-Do not use this feature if you are already logged in. +
+If you have already logged in, you cannot login again. +
 
 ****
 * Roles available to login: Doctor and Receptionist
@@ -263,7 +276,7 @@ to allow you to manage the clinic's patient record more efficiently.
 
 Here are the list of commands:
 
-==== Adding a patient: `addpatient` `[coming in v2.0]`
+==== Adding a patient: `addpatient`
 
 // tag::loginReceptionist[]
 [WARNING]
@@ -271,7 +284,8 @@ You must login as a receptionist in order to use this feature. +
 // end::loginReceptionist[]
 
 You can add a patient to the clinic record. +
-Format: `addpatient n/NAME ic/NRIC p/PHONE_NUMBER e/EMAIL a/ADDRESS [medProb/MEDICAL_PROBLEMS]... [medList/MEDICATIONS]... [allergies/ALLERGIES]... [preferredDoc/PREFERRED_DOC]`
+
+Format: `addpatient n/NAME ic/NRIC p/PHONE_NUMBER e/EMAIL a/ADDRESS [medProb/MEDICAL_PROBLEMS]... [med/MEDICATIONS]... [alrg/ALLERGIES]... [preDr/PREFERRED_DOC]`
 
 [TIP]
 A patient can have any number of medical problems, medications, allergies (including 0) +
@@ -279,58 +293,13 @@ A patient can have any number of medical problems, medications, allergies (inclu
 [TIP]
 A patient does not need to choose a preferred doctor.
 
-Examples:
-
-* `addpatient n/John Doe ic/S1234567D p/98765432 e/johnd@example.com a/John street, block 123, #01-01 allergies/Dairy Products`
-* `addpatient n/Betsy Crowe ic/S2231414A e/betsycrowe@example.com a/Newgate Prison p/1234567 medProb/High Blood Pressure, Asthma`
-
-==== Listing all patients : `listpatient` `[coming in v2.0]`
-
-You can view a list of all patients in the clinic record. +
-Format: `listpatient`
-
-==== Editing a patient : `editpatient` `[coming in v2.0]`
-
-You can edit an existing patient in the clinic record. +
-Format: `editpatient INDEX [n/NAME] [ic/NRIC] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [medProb/MEDICAL_PROBLEMS]... [medList/MEDICATIONS]... [allergies/ALLERGIES]... [preferredDoc/PREFERRED_DOC]`
-
-****
-* Edits the patient at the specified `INDEX`. The index refers to the index number shown in the displayed patient list. The index *must be a positive integer* 1, 2, 3, ...
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing medical problems/medications/allergies/preferred doctor, the existing medical problems/medications/allergies/preferred doctor of the patient will be removed i.e adding of medical problems/medications/allergies/preferred doctor is not cumulative.
-* You can remove all the patient's medical problems by typing `medProb/` without specifying any medical problems after it.
-* You can remove all the patient's medications by typing `medList/` without specifying any medications after it.
-* You can remove all the patient's allergies by typing `allergies/` without specifying any allergies after it.
-* You can remove all the patient's preferred doctor by typing `preferredDoc/` without specifying any preferred doctor after it.
-****
+[NOTE]
+You must choose a preferred doctor that exists inside ClinicIO record.
 
 Examples:
 
-* `editpatient 1 p/91234567 e/johndoe@example.com` +
-Edits the phone number and email address of the 1st patient to be `91234567` and `johndoe@example.com` respectively.
-* `editpatient 2 n/Betsy Crower t/` +
-Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags.
-
-==== Locating patients by name: `findpatient` `[coming in v2.0]`
-
-You can find patients whose names contain any of the given keywords. +
-Format: `findpatient KEYWORD [MORE_KEYWORDS]`
-
-****
-* The search is case insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Patients matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-****
-
-Examples:
-
-* `findpatient John` +
-Returns `john` and `John Doe`
-* `findpatient Betsy Tim John` +
-Returns any patient having names `Betsy`, `Tim`, or `John`
+* `addpatient n/John Doe ic/S1234567D p/98765432 e/johnd@example.com a/John street, block 123, #01-01 alrg/Dairy Products`
+* `addpatient n/Betsy Crowe ic/S2231414A e/betsycrowe@example.com a/Newgate Prison p/1234567 medProb/High Blood Pressure med/Chlorothiazide`
 
 ==== Deleting a patient : `deletepatient` `[coming in v2.0]`
 
@@ -351,6 +320,60 @@ Deletes the 2nd patient in the clinic record.
 * `find Betsy` +
 `deletepatient 1` +
 Deletes the 1st patient in the results of the `find` command.
+
+==== Editing a patient : `editpatient` `[coming in v2.0]`
+
+You can edit an existing patient in the clinic record. +
+Format: `editpatient INDEX [n/NAME] [ic/NRIC] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [medProb/MEDICAL_PROBLEMS]... [med/MEDICATIONS]... [alrg/ALLERGIES]... [preDr/PREFERRED_DOC]`
+
+****
+* Edits the patient at the specified `INDEX`. The index refers to the index number shown in the displayed patient list. The index *must be a positive integer* 1, 2, 3, ...
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing medical problems/medications/allergies/preferred doctor, the existing medical problems/medications/allergies/preferred doctor of the patient will be removed i.e adding of medical problems/medications/allergies/preferred doctor is not cumulative.
+* You can remove all the patient's medical problems by typing `medProb/` without specifying any medical problems after it.
+* You can remove all the patient's medications by typing `med/` without specifying any medications after it.
+* You can remove all the patient's allergies by typing `alrg/` without specifying any allergies after it.
+* You can remove all the patient's preferred doctor by typing `preDr/` without specifying any preferred doctor after it.
+****
+
+Examples:
+
+* `editpatient 1 p/91234567 e/johndoe@example.com` +
+Edits the phone number and email address of the 1st patient to be `91234567` and `johndoe@example.com` respectively.
+* `editpatient 2 n/Betsy Crower t/` +
+Edits the name of the 2nd patient to be `Betsy Crower` and clears all existing tags.
+
+==== Locating patients by name: `findpatient`
+
+You can find patients whose names contain any of the given keywords. +
+
+include::UserGuide.adoc[tag=login]
+
+Format: `findpatient KEYWORD [MORE_KEYWORDS]`
+
+****
+* The search is case insensitive. e.g `hans` will match `Hans`
+* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+* Only the name is searched.
+* Only full words will be matched e.g. `Han` will not match `Hans`
+* Patients matching at least one keyword will be returned (i.e. `OR` search). e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+****
+
+Examples:
+
+* `findpatient John` +
+Returns `john` and `John Doe`
+* `findpatient Betsy Tim John` +
+Returns any patient having names `Betsy`, `Tim`, or `John`
+
+==== Listing all patients : `listpatient`
+
+You can view a list of all patients in the clinic record. +
+
+include::UserGuide.adoc[tag=loginUser]
+
+Format: `listpatient`
 
 ==== Selecting a patient : `selectpatient` `[coming in v2.0]`
 
@@ -429,10 +452,35 @@ Removes the 3rd patient in the displayed list of patients from the queue.
 Selects the 1st Cassandra as displayed in the list resulting from the `find Cassandra` command and removes her from the queue.
 // end::queuecommands[]
 
-// tag::datacommands[]
-=== Data Commands
+// tag::analyticscommands[]
+=== Data Management
 
-==== Displaying patient statistics : `patientstats` `[coming in v2.0]`
+==== Analytics
+The analytics feature allows users to view statistics across the various functions of a clinic. These are viewed in
+isolation with separate commands for each department. However, they share a similar user interface composed of two
+distinct sections. They are the *summary* and the *visualizations* as shown in the following screenshot:
+
+image::AnalyticsScreenshot.png[width="500"]
+
+===== Summary
+The summary displays the number of occurrences of events such as the `Number of appointments` in the screenshot above.
+They can be raw totals or averages. This will be indicated by the title. The numbers are categorized according to the
+following time periods:
+
+. `Today`: The occurrences on the present real life date.
+. `This Week`: The occurrences in the present real life week spanning from Monday to Sunday.
+. `This Month`: The occurrences in the present real life month.
+. `This Year`: The occurrences in the present real life year.
+
+===== Visualizations
+The pane below the summary displays visualizations. There may be multiple visualizations which can be cycled through
+using the `Next` and `Previous` buttons. The visualizations may be either one of a vertical bar chart, horizontal bar
+chart, vertically stacked bar chart or a line chart.
+
+==== Analytics Commands
+The following commands can be used to display the different types of statistics.
+
+===== Displaying patient statistics : `patientstats`
 Displays the following information about patients:
 ****
 * A summary of the number of patients over various time periods.
@@ -441,89 +489,92 @@ Displays the following information about patients:
 ****
 Format: `patientstats`
 
-==== Displaying appointment statistics : `apptstats`
+===== Displaying appointment statistics : `apptstats`
 
 Displays the following information about appointments:
 ****
 * A summary of the number of scheduled appointments over various time periods.
 * The availability of appointment slots as compared to the number of scheduled appointments.
+* The number of appointments scheduled for each month in the current year.
 ****
 Format: `apptstats`
 
-==== Displaying doctor statistics : `doctorstats`
+===== Displaying doctor statistics : `doctorstats`
 
 Displays the following information about doctors:
 ****
 * A summary of the average number of consultations per doctor over various time periods.
 * The number of patient preferences for each doctor.
+* The total number of consultations for each doctor.
 ****
 Format: `doctorstats`
 
-==== Displaying medicine statistics : `medstats` `[coming in v2.0]`
+// end::analyticscommands[]
 
-Displays the following information about medicines:
-****
-* A summary of the quantity of medicines prescribed over various time periods.
-* The average spending on medicines per patient.
-* A breakdown of medicines by their quantity issued.
-****
-Format: `medstats`
+// tag::exportcommands[]
+==== Exporting Patient Data
+ClinicIO allows the exporting of patient related data to Comma Separated Values (csv) files. The filenames are
+predetermined and specific to the type of data being exported. The files are generated in the same file directory as the
+program.
 
-==== Exporting patient personal information : `exportpatients`
+==== Export Commands
+The following commands can be used to export the different types of patient data.
+
+===== Exporting patient personal information : `exportpatients`
 
 Exports all patients' personal information to a csv file named `ClinicIO_patientdata.csv`. +
 Format: `exportpatients`
 
-The personal information consists of the following fields:
+The personal information consists of the following fields, in order:
 ****
-* Name: the patient's name.
-* Address: the patient's address.
-* Phone: the patient's phone number.
-* Email: the patient's email address.
+* `Name`: the patient's name.
+* `Address`: the patient's address.
+* `Phone`: the patient's phone number.
+* `Email`: the patient's email address.
 ****
 
-==== Exporting patients appointment records : `exportpatientsappointments`
+===== Exporting patients appointment records : `exportpatientsappointments`
 
 Exports all patients' appointment records to csv file named `ClinicIO_patientsappointments.csv`. +
 Format: `exportpatientsappointments`
 
-Each appointment record consists of the following fields:
+Each appointment record consists of the following fields, in order:
 ****
-* Name: the patient's name.
-* Address: the patient's address.
-* Phone: the patient's phone number.
-* Email: the patient's email address.
-* Date: the appointment's date.
-* Time: the appointment's time.
-* Status: the appointment's status. May be either `APPROVED` or `CANCELLED`.
-* Type: the type of appointment. May be either `NEW` or `FOLLOW_UP`.
+* `Name`: the patient's name.
+* `Address`: the patient's address.
+* `Phone`: the patient's phone number.
+* `Email`: the patient's email address.
+* `Date`: the appointment's date.
+* `Time`: the appointment's time.
+* `Status`: the appointment's status. May be either `APPROVED` or `CANCELLED`.
+* `Type`: the type of appointment. May be either `NEW` or `FOLLOW_UP`.
 ****
 
-Go to <<Appointment Commands>> for more details.
+Go to <<Appointment Commands>> for more details on appointments.
 
-==== Exporting patients consultation records : `exportpatientsconsultations`
+===== Exporting patients consultation records : `exportpatientsconsultations`
 
 Exports all patients' consultation records to csv file named `ClinicIO_patientsconsultations.csv`. +
 Format: `exportpatientsconsultations`
 
-Each consultation record consists of the following fields:
+Each consultation record consists of the following fields, in order:
 ****
-* Name: the patient's name.
-* Address: the patient's address.
-* Phone: the patient's phone number.
-* Email: the patient's email address.
-* Date: the consultation's date.
-* Arrival Time: the arrival time of the patient at the clinic.
-* Consultation Time: the consultation's start time.
-* End time: the end time of the consultation.
-* Doctor: the doctor being consulted.
-* Prescription: the prescribed ascribed to the patient.
-* Description: the doctor's notes on the patient.
-* Appointment: whether the consultation is the result of an appointment. May be either `YES` or `NO`.
-* Appointment Date: the date of the appointment resulting in the consultation. Empty if no appointment was made.
-* Appointment Time: the time of the appointment resulting in the consultation. Empty if no appointment was made.
+* `Name`: the patient's name.
+* `Address`: the patient's address.
+* `Phone`: the patient's phone number.
+* `Email`: the patient's email address.
+* `Date`: the consultation's date.
+* `Arrival Time`: the arrival time of the patient at the clinic.
+* `Consultation Time`: the consultation's start time.
+* `End time`: the end time of the consultation.
+* `Doctor`: the doctor being consulted.
+* `Prescription`: the prescribed ascribed to the patient.
+* `Description`: the doctor's notes on the patient.
+* `Appointment`: whether the consultation is the result of an appointment. May be either `YES` or `NO`.
+* `Appointment Date`: the date of the appointment resulting in the consultation. Empty if no appointment was made.
+* `Appointment Time`: the time of the appointment resulting in the consultation. Empty if no appointment was made.
 ****
-// end::datacommands[]
+// end::exportcommands[]
 
 // tag::medicinecommands[]
 === Medicine Inventory Commands
@@ -579,26 +630,29 @@ Removes the Paracetemol entry from the medicine inventory.
 ==== Adding appointments: `addappt`
 
 Adds an appointment to the appointment schedule. +
-Format: `addappt d/DATE tm/TIME tp/[followup/new] n/NAME p/PHONE e/EMAIL a/ADDRESS t/TAGS` +
+Format: `addappt d/DATE tm/TIME tp/[followup/new] n/NAME ic/NRIC p/PHONE e/EMAIL a/ADDRESS t/TAGS` +
 
 [NOTE]
-Date is in dd/mm/yyyy format and time is in military time. +
+Date is in dd mm yyyy format and time is hh mm in military time. +
 
 [NOTE]
 Tags are optional. +
 
 Examples:
 
-* `addappt d/03042018 tm/1645 tp/followup n/John Doe p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/fever` +
-Adds a follow-up appointment scheduled on 3 April 2018 at 4.45pm for John Doe. +
+* `addappt d/03 04 2018 tm/16 45 tp/followup n/John Doe ic/S1111111G p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25 t/fever` +
+Adds a follow-up appointment scheduled on 3 April 2018 at 4.45pm for John Doe with IC S1111111G. +
 
-* `addappt d/12122013 tm/1300 tp/new id/100 n/Sally Bower p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25` +
-Adds a new appointment scheduled on 12 December 2013 at 1.00pm for Sally Bower. +
+* `addappt d/12 12 2013 tm/1300 tp/new id/100 n/Sally Bower ic/G3333333H p/98765432 e/johnd@example.com a/311, Clementi Ave 2, #02-25` +
+Adds a new appointment scheduled on 12 December 2013 at 1.00pm for Sally Bower with IC G3333333H. +
 
-==== Listing Appointments by Day: `listappt` [Coming in v1.4]
+==== Listing Appointments by Day: `listappt`
 
 Shows a list of all the appointments for the specified day. +
 Format: `listappt d/DATE` +
+
+[NOTE]
+Date, like in addappt, is in dd mm yyyy format.
 
 Examples:
 
@@ -608,7 +662,12 @@ Lists all appointments on 2 March 2017. +
 * `listappt 01 01 2000` +
 Lists all appointments on 1 January 2000.
 
-==== Cancelling Appointments: `cancelappt` [Coming in v1.4]
+==== Listing All Appointments: `listallappt`
+
+Shows a list of all appointments. +
+Format: `listallappt`
+
+==== Cancelling Appointments: `cancelappt`
 
 Cancels an appointment from the appointment schedule. +
 Format: `cancelappt INDEX` +
@@ -621,11 +680,11 @@ Format: `cancelappt INDEX` +
 
 Examples:
 
-* `listappt d/03042018` +
+* `listappt d/03 04 2018` +
 `cancelappt 1` +
 Cancels the 1st appointment in the list.
 
-* `listappt d/12122018` +
+* `listappt d/12 12 2018` +
 `cancelappt 4` +
 Cancels the 4th appointment in the list.
 
@@ -635,11 +694,12 @@ Cancels the 4th appointment in the list.
 
 This section is designed to help you answer any issues that are frequently asked by others.
 
-*Q*: How do I transfer my data to another Computer? +
-*A*: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ClinicIO folder.
+[qanda]
+How do I transfer my data to another Computer?::
+Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous ClinicIO folder.
 
-*Q*: How to save data in ClinicIO? +
-*A*: There is no need for you to save manually. ClinicIO will automatically save data to the hard disk after any command that changes the data. +
+How to save data in ClinicIO?::
+There is no need for you to save manually. ClinicIO will automatically save data to the hard disk after any command that changes the data. +
 
 == Command Summary
 
@@ -656,16 +716,16 @@ This section is designed to provide a comprehensive list of commands for you.
 === User Authentication Commands
 
 * *Login* : `login r/ROLE n/NAME pass/PASSWORD` +
-e.g. `login r/doctor n/Adam Bell pass/-------`
+e.g. `login r/doctor n/Adam Bell pass/doctor1`
 * *Logout* : `logout`
 
 === Patient Management Commands
 
-* *Add patient* `addpatient n/NAME ic/NRIC p/PHONE_NUMBER e/EMAIL a/ADDRESS [medProb/MEDICAL_PROBLEMS]... [medList/MEDICATIONS]... [allergies/ALLERGIES]... [preferredDoc/PREFERRED_DOC]` +
-e.g. `addpatient n/John Doe ic/S1234567D p/98765432 e/johnd@example.com a/John's Lane, block 123, #01-01 allergies/Dairy Products`
+* *Add patient* `addpatient n/NAME ic/NRIC p/PHONE_NUMBER e/EMAIL a/ADDRESS [medProb/MEDICAL_PROBLEMS]... [med/MEDICATIONS]... [alrg/ALLERGIES]... [preDr/PREFERRED_DOC]` +
+e.g. `addpatient n/John Doe ic/S1234567D p/98765432 e/johnd@example.com a/John's Lane, block 123, #01-01 alrg/Dairy Products`
 * *Delete patient* : `deletepatient INDEX` +
 e.g. `deletepatient 3`
-* *Edit patient* : `editpatient INDEX [n/NAME] [ic/NRIC] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [medProb/MEDICAL_PROBLEMS]... [medList/MEDICATIONS]... [allergies/ALLERGIES]... [preferredDoc/PREFERRED_DOC]` +
+* *Edit patient* : `editpatient INDEX [n/NAME] [ic/NRIC] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [medProb/MEDICAL_PROBLEMS]... [med/MEDICATIONS]... [alrg/ALLERGIES]... [preDr/PREFERRED_DOC]` +
 e.g. `editpatient 2 n/James Lee e/jameslee@example.com`
 * *Find patient* : `findpatient KEYWORD [MORE_KEYWORDS]` +
 e.g. `findpatient James Jake`
@@ -706,9 +766,10 @@ e.g. `increasemedicine m/Paracetamol q/500`
 e.g. `decreasemedicine m/Paracetamol q/20`
 
 === Appointment Commands
-* *Add Appointment* : `addappt [d/DATE] [tm/TIME] [tp/TYPE] [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]... ` +
-e.g. `addappt d/01012018 tm/1430 tp/followup n/Johnny Do p/9999999 e/john@email a/Spring Road t/recurringfever`
+* *Add Appointment* : `addappt [d/DATE] [tm/TIME] [tp/TYPE] [ic/NRIC] [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]...` +
+e.g. `addappt d/01 01 2018 tm/14 30 tp/followup n/Johnny Do ic/D1234567G p/9999999 e/john@email a/Spring Road t/recurringfever`
 * *List Appointment* : `listappt [d/DATE]` +
-e.g. `listappt d/12122012`
+e.g. `listappt d/12 12 2012`
+* *List All Appointment* : `listallappt` +
 * *Cancel Appointment* : `cancelappt INDEX` +
 e.g. `cancelappt 2`

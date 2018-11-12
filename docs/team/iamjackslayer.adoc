@@ -1,72 +1,119 @@
-= John Doe - Project Portfolio
+= Jack Wong - Project Portfolio
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
 
-== PROJECT: AddressBook - Level 4
+== PROJECT: ClinicIO
 
 ---
 
-== Overview
+== 1. Overview
+This portfolio serves the purpose of documenting my contributions to the project - ClinicIO. ClinicIO is a command-oriented desktop software for clinic use with the aim of making the lives of receptionists, doctors and patients easier. Command line is the primary mode of input due to the assessment constraints. Nonetheless, the visual output is graphical.
 
-AddressBook - Level 4 is a desktop address book application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.
+Our team consists of three primary developers, an assistant team lead and a team lead. As an assistant team lead, I assist the team lead in the overall project coordination. Furthermore, I am responsible for the logic component of the software.
 
-== Summary of contributions
+In this project, I have designed and developed some crucial features of the software such as
+_assigning a patient into the queue_, _removing a particular patient from the queue_
+and _showing all the patients in the queue_.
 
-* *Major enhancement*: added *the ability to undo/redo previous commands*
-** What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.
-** Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.
-** Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.
-** Credits: _{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}_
+I worked mainly on _designing the queue_ and the _algorithm of the queueing system_. This system aims to achieve fairness, efficiency and flexibility.
 
-* *Minor enhancement*: added a history command that allows the user to navigate to previous commands using up/down keys.
+Besides queue, I have _designed the model for a patient_ so that the data associated with patients can be stored efficiently in our database.
 
-* *Code contributed*: [https://github.com[Functional code]] [https://github.com[Test code]] _{give links to collated code files}_
+Lastly, I am the main tester of ClinicIO. I _ensure all the components are integrated properly and thoroughly tested_ before the software is deployed.
 
-* *Other contributions*:
+
+== 2. Summary of contributions
+|===
+|_This section outlines the major and minor enhancements I made to ClinicIO. In addition, other relevant contributions made to the project and my team as a whole are also included._
+|===
+==== Major enhancement 1 - added the ability to assign a patient into the queue:
+** *What it does:* It allows the user to assign a patient into the queue based on the index of the patient in the patient display list.
+** *Justification:* This feature improves the product significantly because a user - typically a receptionist - needs to routinely place patients into the queue.
+** *Code snippet for enqueuing a patient:* +
+`model.enqueue((Patient) patientToEnqueue);`
+
+==== Major enhancement 2 - added the ability to remove a patient from the queue:
+** *What it does:* It allows the user to remove a patient from the queue based on the patient's index.
+** *Justification:* This feature improves the product significantly because the user can carry out his/her daily routine more efficiently without affecting existing patients in the queue.
+** *Code snippet for dequeuing a patient:* +
+`model.dequeue((Patient) patientToDequeue);`
+
+==== Major enhancement 3 - designed the preference-based queuing algorithm:
+** *What it does:* It assigns a patient's queuing priority based on his/her preference for any doctor.
+** *Justification:* This feature serves the need of many patients who opt for a specific doctor for consultation. It ensures fairness by prioritising patients who arrive earlier.
+** *Activity diagram for selecting a patient for consultation:* +
+
+image::popqueue.png[]
+
+==== Major enhancement 4 - added the ability to show all patients currently in the queue:
+** *What it does:* It allows the user - typically a receptionist - to display all patients currently in the queue.
+** *Justification:* This feature is useful because patients sometimes would enquire the time it takes for their turn to come. The receptionist can use this simple feature to display all patients in the queue and relay necessary information (how many patients are in front of the asking patient) to the patients.
+** *Code snippet for showing the queue:* +
+`model.updateFilteredPersonList(model.PREDICATE_SHOW_ALL_PATIENTS_IN_QUEUE);`
+
+
+==== Major enhancement 5 - designed the Patient model:
+** *What it does:* It represents the patient in digital format.
+** *Justification:* This feature is crucial because it allows the receptionist to store all relevant information associated with a patient into our database. This allows the receptionist to easily query a patient given some information about the patient.
+** *Class diagram for a patient:* +
+
+image::patientmodel.png[]
+
+
+==== Codes contributed:
+This subsection provides the link to the relevant source codes I am responsible for writing. +
+
+*** Url link to *all codes* I have written (RepoSense dashboard): +
+https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&search=iamjackslayer&sort=displayName&since=2018-09-30&until=2018-11-11&timeframe=day&reverse=false&repoSort=true
+
+
+==== Other contributions: +
+This subsection lists some aspects of the entire project I am responsible for contributing. These contributions reflect my role as an assistant team lead for the project and also my technical responsibility as the main tester for the software. Furthermore, this subsection lists some of my contributions beyond our team.
 
 ** Project management:
-*** Managed releases `v1.3` - `v1.5rc` (3 releases) on GitHub
-** Enhancements to existing features:
-*** Updated the GUI color scheme (Pull requests https://github.com[#33], https://github.com[#34])
-*** Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests https://github.com[#36], https://github.com[#38])
+*** Managed releases `v1.3`(Practical Exam Dry Run) on GitHub.
+*** Managed ClinicIO Board - A digital equivalent of whiteboard that displays tasks and issues belonged to team members. I also created a column which contains articles on miscellaneous topics such as how to collaborate effectively on Github. +
+Url link to ClinicIO Board: https://github.com/CS2103-AY1819S1-W14-1/main/projects/1
+** Quality assurance:
+*** Wrote additional tests for existing features.
+*** Reviewed all test cases written by team members.
+**** Example review: https://github.com/CS2103-AY1819S1-W14-1/main/pull/106
 ** Documentation:
-*** Did cosmetic tweaks to existing contents of the User Guide: https://github.com[#14]
+*** Updated the class diagram for Model component in the Developer Guide:
+**** Url link: +
+https://github.com/CS2103-AY1819S1-W14-1/main/blob/master/docs/DeveloperGuide.adoc#24-model-component
 ** Community:
-*** PRs reviewed (with non-trivial review comments): https://github.com[#12], https://github.com[#32], https://github.com[#19], https://github.com[#42]
-*** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
-*** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
-*** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
-** Tools:
-*** Integrated a third party library (Natty) to the project (https://github.com[#42])
-*** Integrated a new Github plugin (CircleCI) to the team repo
+*** Reviewed PRs (Pull Requests) of team members:
+**** Url link: https://github.com/CS2103-AY1819S1-W14-1/main/pull/105
+**** Url link: https://github.com/CS2103-AY1819S1-W14-1/main/pull/106
+*** Contributed to a forum discussion:
+**** Url link: https://github.com/nus-cs2103-AY1819S1/forum/issues/127
+*** Reported bugs and suggestions for another team in the class:
+**** Team T16-4: https://github.com/CS2103-AY1819S1-T16-4/main/issues/171
+**** Team T16-4: https://github.com/CS2103-AY1819S1-T16-4/main/issues/181
+**** Team T16-4: https://github.com/CS2103-AY1819S1-T16-4/main/issues/165 +
 
-_{you can add/remove categories in the list above}_
+{empty} +
+{empty} +
 
-== Contributions to the User Guide
-
-
-|===
-|_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
-|===
-
-include::../UserGuide.adoc[tag=undoredo]
-
-include::../UserGuide.adoc[tag=dataencryption]
-
-== Contributions to the Developer Guide
+== 3. Contributions to the User Guide
 
 |===
-|_Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|_This section delineates my contributions to the User Guide. They showcase my ability to write documentation targeting the end users._
 |===
 
-include::../DeveloperGuide.adoc[tag=undoredo]
+include::../UserGuide.adoc[tag=queuecommands]
 
-include::../DeveloperGuide.adoc[tag=dataencryption]
+== 4. Contributions to the Developer Guide
 
+|===
+|_This section delineates my contributions to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project._
+|===
 
-== PROJECT: PowerPointLabs
+include::../DeveloperGuide.adoc[tag=queue]
 
----
+''''
 
-_{Optionally, you may include other projects in your portfolio.}_
+[.text-center]
+_This is the end of my project portfolio_
