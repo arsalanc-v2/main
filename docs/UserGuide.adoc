@@ -429,7 +429,7 @@ Removes the 3rd patient in the displayed list of patients from the queue.
 Selects the 1st Cassandra as displayed in the list resulting from the `find Cassandra` command and removes her from the queue.
 // end::queuecommands[]
 
-// tag::datacommands[]
+// tag::analyticscommands[]
 === Data Management
 
 ==== Analytics
@@ -437,7 +437,7 @@ The analytics feature allows users to view statistics across the various functio
 isolation with separate commands for each department. However, they share a similar user interface composed of two
 distinct sections. They are the *summary* and the *visualizations* as shown in the following screenshot:
 
-image::AnalyticsScreenshot.png[width="800"]
+image::AnalyticsScreenshot.png[width="500"]
 
 ===== Summary
 The summary displays the number of occurrences of events such as the `Number of appointments` in the screenshot above.
@@ -486,6 +486,9 @@ Displays the following information about doctors:
 ****
 Format: `doctorstats`
 
+// end::analyticscommands[]
+
+// tag::exportcommands[]
 ==== Exporting Patient Data
 ClinicIO allows the exporting of patient related data to Comma Separated Values (csv) files. The filenames are
 predetermined and specific to the type of data being exported. The files are generated in the same file directory as the
@@ -548,7 +551,7 @@ Each consultation record consists of the following fields, in order:
 * `Appointment Date`: the date of the appointment resulting in the consultation. Empty if no appointment was made.
 * `Appointment Time`: the time of the appointment resulting in the consultation. Empty if no appointment was made.
 ****
-// end::datacommands[]
+// end::exportcommands[]
 
 // tag::medicinecommands[]
 === Medicine Inventory Commands

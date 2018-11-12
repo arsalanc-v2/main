@@ -513,7 +513,7 @@ In the example outlined in Step 5, if the `Model#hasMedicine(Paracetamol)` retur
 ==== Implementation
 The following class diagram represents the relationships between classes in the `analytics` package.
 
-image::AnalyticsClassDiagram.png[width="600"]
+image::AnalyticsClassDiagram.png[width="500"]
 
 The abstract `Statistics` class specifies methods for the computation and retrieval of two groups of statistics. The
 first group consists of statistics to be displayed as a summary while the second is for ones that are visualized. Each
@@ -551,17 +551,16 @@ bar chart or a line chart.
 *** `chartTitle`: the title of the chart.
 *** `xTitle`: the title of the horizontal axis if the chart is vertical or the vertical axis if horizontal.
 *** `yTitle`: the title of the vertical axis if the chart is vertical or the horizontal axis if horizontal.
-*** `dataGroups`: the groups of data points to be plotted. Must be the same in number as `dataGroupsLabels`.
-*** `dataGroupsLabels`: the label for each group of data. Used in the legend of the chart. Must be the same in number as
+*** `dataGroups`: the groups of data points to be plotted. [red]*Must* be the same in number as `dataGroupsLabels`.
+*** `dataGroupsLabels`: the label for each group of data. Used in the legend of the chart. [red]*Must* be the same in
+number as
  `dataGroups`.
 * `Tuple`:
-** used to store pairs of values.
+** used to store pairs of values as a convenient means by which to transport data points.
 ** used mostly within a `List`, allowing order to be preserved.
-** used throughout the `analytics` package as convenient means by which to transport data points.
 
 ==== Processes
-This section describes the processes that take place, from the entering of the command by the user to the displaying of
-analytics.
+This section describes the processes that take place in order to display analytics.
 
 ===== All Statistics Commands
 
@@ -619,9 +618,8 @@ The following are the processes performed specifically by `DoctorStatistics`:
 wait longer (if at all) to view them.
 * **Alternative 2:** Compute statistics every time there is a change in the underlying data
 ** Pro: There is no chance of the user having to wait to view statistics.
-** Con: This increases the computational workload which may provide little benefit. For example, if there is frequent
-change in underlying data such as the number of patients while the user hardly views statistics, computational resources
- would be wasted.
+** Con: This increases the computational workload which may provide little benefit if statistics are not viewed
+frequently by the user.
 
 ===== Aspect: User interface for the different types of statistics
 
@@ -635,11 +633,9 @@ results in greater flexibility even in the future as users may have changing ana
 ** Cons: It may lower design consistency, forcing users to readjust each time they view it. It is more difficult to
 implement.
 * **Alternative 3:** Allow users to pick and choose which statistics they want to view.
-** Pro: This provides the greatest flexibility as users total control in which statistics they view.
-** Cons: The burden is placed on the user having to think and decide which statistics they want to view. It is more
- difficult to implement due requiring a consistent user interface that would allow the myriad of possible
- combinations of statistics that a user may choose.
-
+** Pro: This provides the greatest flexibility as users have total control in which statistics they view.
+** Cons: The burden is placed on the user having to decide which statistics they want to view. It is more difficult to
+implement as a consistent user interface needs to be designed to accomodate all the possible combinations.
 // end::analytics[]
 
 // tag::export[]
@@ -650,7 +646,7 @@ format.
 ==== Current Implementation
 The following swimlane diagram represents the workflow of the export functionality.
 
-image::ExportSwimlaneDiagram.png[width="800"]
+image::ExportSwimlaneDiagram.png[width="500"]
 
 The `ExportPatientData` class contains `static` methods for filtering and organizing the relevant data. These methods
 depend on a list of patients. It then passes the data to `ExportUtil` in order to write to a CSV file. `ExportUtil` also

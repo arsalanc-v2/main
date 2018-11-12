@@ -12,21 +12,19 @@
 // 2 paragraphs
 // number sections
 // pdf
-This page showcases my contributions to an open source software engineering group project which was done as part of a
-university module. We built a desktop application named ClinicIO. ClinicIO is intended for medical clinic receptionists
-and doctors. It allows them to effortlessly manage a multitude of clinic processes such as storing patient records and
-managing queues. While there is a Graphical User Inteface (GUI) for displaying results, a key constraint for the module
-was to ensure that the application is used through a text interface. The program logic is written in Java in an Object
-Oriented manner and the GUI is written in JavaFX.
+This page showcases my contributions to an open source software engineering group project as part of a university module.
+ClinicIO is a desktop application intended for medical clinic receptionists and doctors. It allows them to effortlessly
+manage a multitude of clinic processes such as managing queues. While there is a Graphical User Inteface (GUI) for
+displaying results, a key constraint for the module was to ensure that the application is used through a text interface.
+The program logic is written in Java in an Object Oriented manner and the GUI is written in JavaFX.
 
 In the management of the project, I was responsible for ensuring the quality of the project's documentation. This
-involved a decided focus on reviewing language, ensuring that it is comprehensive and as simple as possible to
-understand. I believe this is important to enable our program to be adopted by users and external developers.
+involved a decided focus on reviewing language, ensuring that it is in-depth and simple to understand. I believe this is
+important to enable our program to be adopted by users and external developers.
 
-My individual role was as a developer in charge of all aspects related to making use of the data in the program. To this
-end, I first worked together with my group members to understand their features. Subsequently, I integrated the
-ability to view analytics for each of them. In addition, the ability to export data out of the program was another key
-aspect I contributed.
+My individual role was as a developer in charge of managing the program's data. To this end, I worked together with my
+group members to understand their features and subsequently integrated the ability to view analytics for each of them.
+In addition, I contributed the ability to export data out of the program.
 
 == 2. Summary of contributions
 
@@ -35,26 +33,23 @@ This section lays out my contributions to the project.
 * *Code contributed*: https://nus-cs2103-ay1819s1.github.io/cs2103-dashboard/#=undefined&search=arsalanc-v2[my code]
 
 ==== 2.1 Major enhancement: the ability to view detailed statistics and visualizations.
-** _What it does_: It allows the user to track the activity of a clinic through objective metrics, in a simple
-manner.
-Analytics support is enabled for patients, appointments and doctors.
+** _What it does_: It allows the user to track the activity of a clinic through objective metrics, in a simple manner.
+Analytics are enabled for patients, appointments and doctors.
 ** _Justification_: This feature improves the product significantly because it provides a user with insight to make
 decisions regarding the clinic's processes. This can be used to improve the efficiency and the experience for both staff
- and patients. It ensures that the clinic is able to improve with time, in multiple aspects, in order to benefit all
- stakeholders.
+ and patients. It ensures that the clinic is able to improve with time, in order to benefit all stakeholders.
 ** _Highlights_: This enhancement integrates across the major functions of a clinic. It was a challenge to design and
-implement a flexible yet powerful interface through which different types of visualizations can be easily
-created. A consistent and visually appealing graphical user interface was also a key part of this. This was done in order to
+implement a flexible yet powerful interface through which different types of visualizations can be easily created. A
+consistent and visually appealing graphical user interface was also a key part of this. This was done in order to
 ensure that many more metrics can be programmed to be tracked in the future.
 
-The following code snippet adds a vertical bar chart visualization:
+The following code snippet adds a summary of statistics to be displayed:
 
-`statData.add("chart id goes here", ChartType.VERTICAL_BAR, "chart title goes here",  "horizontal axis title goes here",
-"vertical axis title goes here", {list of data points go here}, {list of data labels go here})`
+`statData.updateSummary("title goes here", "list of labels go here", "list of values go here")`
 
-// * *Minor enhancement*: the ability to export various types of patient data to a human editable format (CSV).
+* *Minor enhancement*: the ability to export various types of patient data to a human editable format (CSV).
 // * *Minor enhancement*: a representation of a doctor-patient consultation with fields such as the patient's arrival
-time.
+// time.
 
 ==== 2.2 Other contributions:
 
@@ -96,7 +91,10 @@ end-users
 ._
 |===
 
-include::../UserGuide.adoc[tag=datacommands]
+include::../UserGuide.adoc[tag=analyticscommands]
+
+You can view my user guide contribution towards the export feature here:
+https://github.com/CS2103-AY1819S1-W14-1/main/blob/master/docs/UserGuide.adoc#exporting-patient-data[exporting patient data]
 
 == 4. Contributions to the Developer Guide
 
@@ -107,7 +105,7 @@ documentation and the technical depth of my contributions to the project._
 
 include::../DeveloperGuide.adoc[tag=analytics]
 
-// include::../DeveloperGuide.adoc[tag=export]
+include::../DeveloperGuide.adoc[tag=export]
 
 
 
